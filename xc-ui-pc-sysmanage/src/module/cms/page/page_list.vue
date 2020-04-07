@@ -36,35 +36,17 @@
         </el-table-column>
         <el-table-column prop="pageCreateTime" label="创建时间" width="180" :formatter="formatCreatetime">
         </el-table-column>
-        <el-table-column label="编辑" width="80">
-          <template slot-scope="scope">
+        <el-table-column label="操作" width="180">
+          <template slot-scope="page">
             <el-button
-              size="small"type="primary"
-              @click="edit(scope.row.pageId)">编辑
+              size="small"type="text"
+              @click="edit(page.row.pageId)">编辑
             </el-button>
-          </template>
-        </el-table-column>
-        <el-table-column label="删除" width="70">
-          <template slot-scope="scope">
             <el-button
-              size="mini"
-              type="danger"
-              @click="del(scope.$index, scope.row)">删除
+              size="small"type="text"
+              @click="del(page.row.pageId)">删除
             </el-button>
-          </template>
-        </el-table-column>
-        <el-table-column label="静态化" width="100">
-          <template slot-scope="scope">
-            <el-button
-              size="small" type="primary" plain @click="generateHtml(scope.row.pageId)">静态化
-            </el-button>
-          </template>
-        </el-table-column>
-        <el-table-column label="发布" width="80">
-          <template slot-scope="scope">
-            <el-button
-              size="small" type="primary" plain @click="postPage(scope.row.pageId)">发布
-            </el-button>
+            <el-button @click="preview(page.row.pageId)" type="text" size="small">页面预览</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -144,6 +126,10 @@
         if (createTime) {
           return utilApi.formatDate(createTime, 'yyyy-MM-dd hh:mm:ss');
         }
+      },
+      preview:function (pageId) {
+        //打开浏览器窗口
+        window.open("http://www.xuecheng.com/cms/preview/"+pageId);
       },
       generateHtml (id) {
         // console.log(id)
