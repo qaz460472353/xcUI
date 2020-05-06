@@ -49,6 +49,13 @@
             <el-button @click="preview(page.row.pageId)" type="text" size="small">页面预览</el-button>
           </template>
         </el-table-column>
+        <el-table-column label="发布" width="80">
+        <template slot‐scope="scope">
+          <el-button
+          size="small" type="primary" plain @click="postPage(scope.row.pageId)">发布
+          </el-button>
+        </template>
+        </el-table-column>
       </el-table>
       <!--分页-->
       <el-col :span="24" class="toolbar">
@@ -137,7 +144,7 @@
             page: this.params.page,
             siteId: this.params.siteId}})
       },
-      /*postPage (id) {
+      postPage (id) {
         this.$confirm('确认发布该页面吗?', '提示', {
         }).then(() => {
           this.listLoading = true;
@@ -153,7 +160,7 @@
         }).catch(() => {
 
         });
-      },*/
+      },
       edit(pageId){
         this.$router.push({ path: '/cms/page/edit/'+pageId,query:{
             page: this.params.page,
