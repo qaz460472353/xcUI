@@ -1,3 +1,5 @@
 # xcUI
 
-学成前端页面
+xcEdu 学成在线系统(前端)
+
+基于前后端分离模式开发，基础架构：Spring家族+Vue家族(elementUI)
